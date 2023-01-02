@@ -1,28 +1,25 @@
-const express = require('express')
-const app = express()
+require('dotenv').config()
+const express = require('express');
+const multer = require('multer');
+const { memoryStorage } = require('multer')
+const storage = memoryStorage()
+const upload = multer({ storage })
+const uploadAudio = require('./aws')
 
+const app = express();
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
-const multer  = require('multer')
+// uplaods post route. posts to s3 bucket
+app.post('/upload',upload.single('beat'), async (req, res) => {
+    const filename = 'tcct';
+    const bucketname = 'beatsnipet';
+    const file = req.file.buffer
+    // link is the returned object URL from S3
+    const link = await uploadAudio(filename, bucketname, file)
+    res.send(link)
+})
 
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads')
-    },
-    filename: function (req, file, cb) {
-      const uniqueSuffix = Math.round((Math.random()*100))+".mp3"
-      cb(null, file.fieldname + '-' + uniqueSuffix)
-    }
-  })
-  
-
-const upload = multer({ storage: storage })
-
-
-
-app.post('/beats', upload.single('beat'), function (req, res) {
-   console.log(req.file, req.body)
-   res.send("success")
-});
-
-app.listen(5000, console.log("server running"))
+app.listen(8000, () => {
+    console.log('serving on 8000')
+})
