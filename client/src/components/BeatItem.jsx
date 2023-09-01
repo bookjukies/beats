@@ -3,7 +3,8 @@ import useGlobal from "../hooks/useGlobal";
 import { useMedia } from "../stores/mediaStore";
 import { CartIcon } from "./Icons";
 
-function Beat({ name, title, price, type }) {
+function Beat({ name, title, price, type , cover}) {
+ 
   const { setOpenPrice } = useGlobal();
   const play = useMedia((state) => state.play);
   const navigate = useNavigate();
@@ -17,12 +18,13 @@ function Beat({ name, title, price, type }) {
   };
 
   return (
-    <div className="grid grid-cols-10 h-16 bg-yellow-400 my-2">
-      <div className="col-span-2 bg-slate-400 h-16 w-16 rounded-xl" onClick={handlePlay}>
+    <div className="grid grid-cols-10 h-16 my-2 text-white">
+      <div className="col-span-2  h-16 w-16 rounded-xl" onClick={handlePlay}>
         {/* Display image */}
+        <img className="rounded-xl" src={`/images/${cover}`} alt="" />
       </div>
       <div className="col-span-6 text-sm px-1">
-        <Link to={`/beat/${name}`} className="block">
+        <Link to={`/beat/${name}`} state={{ name, title, price, type, cover}} className="block">
           {name}
         </Link>
         <Link to={`/producer/${title}`} className="block">
@@ -32,13 +34,13 @@ function Beat({ name, title, price, type }) {
           {type}
         </Link>
       </div>
-      <div className="col-span-2">
-        <div className="">
+      <div className="col-span-2 grid content-center">
+        <div className="justify-self-center">
           <button onClick={handleAddToCart}>
             <CartIcon />
           </button>
         </div>
-        <div className="">R {price}.00</div>
+        <div className="justify-self-center">R {price}.00</div>
       </div>
     </div>
   );

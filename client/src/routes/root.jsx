@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { useMedia } from "../stores/mediaStore"
 import Header from "./header"
-import { Outlet, useLoaderData} from "react-router-dom"
+import { Outlet, useLoaderData, useLocation} from "react-router-dom"
 import Search from "../components/Search";
 import MediaPlayer from "../components/MediaPlayer";
 
@@ -9,8 +10,12 @@ import MediaPlayer from "../components/MediaPlayer";
 
 export default function Root() {
   const playing = useMedia(state => state.playing)
-    
+  const { pathname } = useLocation();
   const data = useLoaderData()
+
+  useEffect(() => {
+       window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="h-screen relative">

@@ -1,27 +1,37 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link , useLocation} from "react-router-dom"
 import { PlayIcon, CartIcon, DownloadIcon } from "../components/Icons"
 import { useMedia } from "../stores/mediaStore"
+import useGlobal from "../hooks/useGlobal"
 
 function Beat() {
+    const {data} = useGlobal()
+    let {state } = useLocation()
+
+
     const params = useParams()
     const id = params.id
     const play = useMedia(state => state.play)
+    
+
+    const beat = state || data.filter(entry => entry.name == id)[0]
+ 
 
     const handlePlay = () =>{
         play("hello")
     }
     
   return (
-    <div className="text-black pt-28 w-full h-full py-2 ">
-        <div className="w-full bg-slate-500 h-3/5 grid content-end py-2 px-4"> 
-            <div className=" "> 
-                <button className="bg-black-5 text-white p-2 rounded-full" onClick={handlePlay}><PlayIcon /></button>
+    <div className="text-black w-full h-full  relative mt-24">
+        {beat?  <div className={`w-full h-3/5 grid content-end py-2 px-4 bg-cover`} style={{ 
+      backgroundImage: `url("/images/${beat.cover}")`}}> 
+            <div className=" bg-over absolute top-0 h-3/5 w-screen left-0 grid py-4"> 
+                <button className="bg-black-5 text-white px-3 rounded-full inline w-12 h-12 text-center" onClick={handlePlay}><PlayIcon /></button>
                 
-                <h1 className="text-3xl font-bold my-2">{id}</h1>
-                <h2 className="my-2 text-xl font-medium"><Link>Producer</Link></h2>
-                <Link className="bg-gray-800 text-gray-200 py-1 px-4 rounded-xl" to=''>#type</Link>
+                <h1 className="text-3xl font-bold my-2 text-white">{id}</h1>
+                <h2 className="my-2 text-xl font-medium text-white"><Link>{beat.title}</Link></h2>
+                <Link className="bg-gray-800 text-gray-200 py-1 px-4 rounded-xl w-16 h-8 inline-block" to=''>{beat.type}</Link>
             </div>
-         </div>
+         </div> : null}
 
         <div className="px-2">
          <button className="bg-sky-500 text-white flex w-full py-2 rounded-md my-2 justify-center gap-2 font-semibold text-lg"> <CartIcon /> Buy for R 500.00</button>
