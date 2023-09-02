@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'over': 'rgba(0, 0, 0, 0.1)'
+        'over': 'rgba(0, 0, 0, 0.20)'
       }
     },
   },
