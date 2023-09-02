@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useMedia } from "../stores/mediaStore"
-import Header from "./header"
+import Header from "../components/Header"
 import { Outlet, useLoaderData, useLocation} from "react-router-dom"
 import Search from "../components/Search";
 import MediaPlayer from "../components/MediaPlayer";
@@ -18,7 +18,7 @@ export default function Root() {
   }, [pathname]);
 
   return (
-    <div className="h-screen relative">
+    <div className="relative">
         <Header />
         <Search />
         <Outlet  context={data}/>

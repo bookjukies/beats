@@ -18,25 +18,26 @@ function Beat({ name, title, price, type , cover}) {
   };
 
   return (
-    <div className="grid grid-cols-10 h-16 my-2 text-white">
-      <div className="col-span-2  h-16 w-16 rounded-xl" onClick={handlePlay}>
-        {/* Display image */}
-        <img className="rounded-xl" src={`/images/${cover}`} alt="" />
+    <div className="grid grid-cols-10 h-16 my-3 text-white gap-2 bg-neutral-900 rounded-xl">
+      <div className="col-span-2  h-full rounded-xl grid" onClick={handlePlay}>
+
+        <img className="rounded-xl self-center" src={`/images/${cover}`} alt="" />
       </div>
-      <div className="col-span-6 text-sm px-1">
-        <Link to={`/beat/${name}`} state={{ name, title, price, type, cover}} className="block">
+      <div className="col-span-6 text-sm px-2 grid">
+        <Link to={`/beat/${name}`} state={{ name, title, price, type, cover}} className="block font-bold text-xl capitalize overflow-x-hidden whitespace-nowrap">
           {name}
         </Link>
-        <Link to={`/producer/${title}`} className="block">
-          {title}
-        </Link>
-        <Link to={`/type/${type}`} className="block">
-          {type}
-        </Link>
+
+        <div className="grid grid-cols-10 self-end gap-2 text-lg">
+          <div className="font-bold whitespace-nowrap col-span-4 overflow-x-hidden">R {price}</div>
+          <Link to={`/producer/${title}`} className="block capitalize h-full overflow-x-hidden whitespace-nowrap text-base col-span-6">
+            {title}
+          </Link>
+        </div>
       </div>
       <div className="col-span-2 grid content-center">
-        <div className="justify-self-center">
-          <button onClick={handleAddToCart}>
+        <div className="justify-self-center ">
+          <button className="bg-sky-400 p-2 rounded-full" onClick={handleAddToCart}>
             <CartIcon />
           </button>
         </div>

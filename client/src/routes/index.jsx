@@ -14,8 +14,8 @@ export default function Index() {
     <div className="h-screen py-20 mt-4 " >
       <section className=" h-2/4 md:h-screen bg-cover bg-center grid p-4" style={{backgroundImage: `url("/images/hero1.jpg")`}}>
         <div className="self-end grid gap-4">
-          <h2 className="text-white text-justify w-3/4 font-semibold text-lg"> Our producers create the hottest, freshest, and hardest-hitting Sounds around.</h2>
-          <button className="text-white bg-sky-400 w-3/4 self-center py-2 text-lg font-bold">Listen</button>
+          <h2 className="text-white text-center font-semibold text-lg"> Our producers create the hottest, freshest, and hardest-hitting Sounds around.</h2>
+          <button className="text-white bg-sky-400 w-3/4 self-center justify-self-center py-2 text-lg font-bold rounded">Listen</button>
         </div>
       </section>
       <section className="h-2/5 bg-neutral-950">

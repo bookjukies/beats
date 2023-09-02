@@ -26,8 +26,8 @@ const PlanList = () => {
   return (
     <dialog className="bg-white h-screen w-screen flex-col fixed top-0 z-50" open={openPrice}>
       <div className="grid grid-cols-10 bg-black text-white px-4 py-2">
-        <h1 className="col-span-8 font-bold text-lg">Choose plan</h1>
-        <button onClick={handleDialogClose}>
+        <h1 className="col-span-9 font-bold text-lg">Choose plan</h1>
+        <button className="" onClick={handleDialogClose}>
           <Cross />
         </button>
       </div>

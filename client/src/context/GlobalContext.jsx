@@ -6,6 +6,7 @@ const GlobalContext  = createContext()
 export const GlobalProvider = ({children}) =>{
     const [data, setData] = useState([])
     const [openPrice, setOpenPrice] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect(()=>{
        getData()
@@ -16,7 +17,7 @@ export const GlobalProvider = ({children}) =>{
         setData(await res.data)
     }
     
-    return <GlobalContext.Provider value={{openPrice, setOpenPrice, data}}>
+    return <GlobalContext.Provider value={{openPrice, setOpenPrice, data, isLoggedIn, setIsLoggedIn}}>
         {children}
     </GlobalContext.Provider>
 }
