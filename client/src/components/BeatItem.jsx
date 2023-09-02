@@ -40,7 +40,7 @@ function Beat({ name, title, price, type , cover}) {
             <CartIcon />
           </button>
         </div>
-        <div className="justify-self-center">R {price}.00</div>
+        {/* <div className="justify-self-center">R {price}.00</div> */}
       </div>
     </div>
   );

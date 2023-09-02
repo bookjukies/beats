@@ -7,9 +7,9 @@ const PlanList = () => {
   const [active, setActive] = useState("commercial");
 
   const terms = [
-    { id: 1, name: "basic", price: 500 },
-    { id: 2, name: "commercial", price: 1000 },
-    { id: 3, name: "royalty", price: 4500 },
+    { id: 1, name: "basic", price: 300 },
+    { id: 2, name: "commercial", price: 600 },
+    { id: 3, name: "royalty", price: 1200 },
     { id: 4, name: "exclusive", price: "Negotiate" },
   ];
 
@@ -53,7 +53,7 @@ const PlanList = () => {
         </fieldset>
       </form>
 
-      <details className="px-4">
+      <details className="px-4 my-2">
         <summary>Plan terms</summary>
         <div>
           {terms.filter((term) => term.name === active).map((entry) => (
@@ -62,9 +62,9 @@ const PlanList = () => {
         </div>
       </details>
 
-      <div className="grid grid-col-1 px-4">
+      <div className="grid grid-col-1 px-4 gap-2">
         <p>Total : {activeTerm.price === "Negotiate" ? activeTerm.price : `R${activeTerm.price}`}</p>
-        <button className="bg-blue-600 text-white">Add to Cart</button>
+        <button className="bg-blue-600 text-white py-2">Add to Cart</button>
       </div>
     </dialog>
   );

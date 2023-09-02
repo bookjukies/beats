@@ -24,7 +24,7 @@ function Beat() {
     <div className="text-black w-full h-full  relative mt-24">
         {beat?  <div className={`w-full h-3/5 grid content-end py-2 px-4 bg-cover`} style={{ 
       backgroundImage: `url("/images/${beat.cover}")`}}> 
-            <div className=" bg-over absolute top-0 h-3/5 w-screen left-0 grid py-4 "> 
+            <div className=" bg-over absolute top-0 h-3/5 w-screen left-0 grid"> 
                 <button className="bg-black-5 text-white px-3 rounded-full inline w-12 h-12 text-center" onClick={handlePlay}><PlayIcon /></button>
                 
                 <h1 className="text-3xl font-bold my-2 text-white">{id}</h1>
