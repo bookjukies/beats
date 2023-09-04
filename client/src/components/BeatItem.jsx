@@ -14,7 +14,7 @@ function Beat({ name, title, price, type, cover }) {
 
   const handleAddToCart = () => {
     setOpenPlan(true);
-    setToPurchase({name, title, price})
+    setToPurchase({name, title})
   };
 
   return (
