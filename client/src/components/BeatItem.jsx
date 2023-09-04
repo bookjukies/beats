@@ -18,7 +18,7 @@ function Beat({ name, title, price, type, cover }) {
   };
 
   return (
-    <div className="grid grid-cols-10 h-16 my-3 text-white gap-2 bg-neutral-900 rounded-xl">
+    <div className="grid grid-cols-10 h-18 py-1 my-3 text-white gap-2 bg-neutral-900 rounded-xl">
       <div className="col-span-2 h-full rounded-xl grid" onClick={handlePlay}>
         <img
           className="rounded-xl self-center md:h-16"

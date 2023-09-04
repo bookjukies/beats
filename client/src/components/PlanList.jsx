@@ -4,16 +4,16 @@ import useGlobal from "../hooks/useGlobal";
 import useCartStore from "../stores/cartStore";
 
 const PlanList = () => {
-  const { openPlan, setOpenPlan , toPurchase, setToPurchase} = useGlobal();
+  const { openPlan, setOpenPlan , toPurchase} = useGlobal();
   const [active, setActive] = useState("commercial");
   const addItem = useCartStore((store)=> store.addItem)
-  const cart = useCartStore((store)=> store.items)
+ 
 
   const terms = [
     { id: 1, name: "basic", price: 300 },
     { id: 2, name: "commercial", price: 600 },
     { id: 3, name: "royalty", price: 1200 },
-    { id: 4, name: "exclusive", price: "Negotiate" },
+    // { id: 4, name: "exclusive", price: "Negotiate" },
   ];
 
   const handlePlanChange = (e) => {
@@ -25,6 +25,11 @@ const PlanList = () => {
   };
 
   const activeTerm = terms.find((term) => term.name === active);
+
+  const addToCartHandle = () =>{
+    addItem({...toPurchase, price: activeTerm.price})
+    setOpenPlan(false)
+  }
 
 
 
@@ -50,7 +55,8 @@ const PlanList = () => {
               >
                 <input type="radio" id={term.name} name="plan" value={term.name} className="hidden" />
                 <label htmlFor={term.name} className="py-2 px-1">
-                  <span className="block">{term.name}</span> <span className="">{term.price === "Negotiate" ? term.price : `R${term.price}`}</span>
+                  {/* <span className="block">{term.name}</span> <span className="">{term.price === "Negotiate" ? term.price : `R${term.price}`}</span> */}
+                  <span className="block">{term.name}</span> <span className="">{`R ${term.price}`}</span>
                 </label>
               </div>
             ))}
@@ -68,8 +74,9 @@ const PlanList = () => {
       </details>
 
       <div className="grid grid-col-1 px-4 gap-2">
-        <p>Total : {activeTerm.price === "Negotiate" ? activeTerm.price : `R${activeTerm.price}`}</p>
-        <button className="bg-blue-600 text-white py-2" onClick={()=> addItem({...toPurchase, price: activeTerm.price})}>Add to Cart</button>
+        {/* <p>Total : {activeTerm.price === "Negotiate" ? activeTerm.price : `R${activeTerm.price}`}</p> */}
+        <p>Total : {`R ${activeTerm.price}`}.00</p>
+        <button className="bg-blue-600 text-white py-2" onClick={addToCartHandle}>Add to Cart</button>
       </div>
     </dialog>
   );

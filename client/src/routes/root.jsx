@@ -6,6 +6,7 @@ import Search from "../components/Search";
 import MediaPlayer from "../components/MediaPlayer";
 import SideBar from "../components/SideBar";
 import useGlobal from "../hooks/useGlobal";
+import PlanList from "../components/PlanList";
 
 export default function Root() {
   const playing = useMedia((state) => state.playing);
@@ -29,7 +30,10 @@ export default function Root() {
         <SideBar isOpen={isSidebarOpen} closeSidebar={toggleSidebar} />
       </div>
 
+      <PlanList />
+
       <Outlet context={data} />
+      
       {playing ? <MediaPlayer audioSource={"/test.mp3"} /> : null}
     </div>
   );

@@ -8,6 +8,7 @@ function MediaPlayer({audioSource}) {
 
   useEffect(() => {
     const audio = audioRef.current;
+    play
 
     if (isPlaying) {
       audio.play();

@@ -1,23 +1,28 @@
 import React from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { PlayIcon, CartIcon, DownloadIcon } from "../components/Icons";
 import { useMedia } from "../stores/mediaStore";
 import useGlobal from "../hooks/useGlobal";
 
 function Beat() {
-  const { data } = useGlobal();
-  const { state } = useLocation();
+  const { data, setOpenPlan, setToPurchase } = useGlobal();
   const { id } = useParams();
   const play = useMedia((state) => state.play);
 
-  const beat = state || data.find((entry) => entry.name === id);
+  const beat = data.find((entry) => entry.name === id);
 
   const handlePlay = () => {
     play("hello");
   };
 
+
+  const handleAddToCart = () => {
+    setOpenPlan(true);
+    setToPurchase({ name: beat.name, title: beat.title });
+  };
+
   return (
-    <div className="text-black w-full h-screen relative mt-24 py-2">
+    <div className="text-black w-full h-screen relative mt-24 py-2 bg-black">
       {beat && (
         <div
           className="w-full h-3/5 grid content-end bg-center bg-cover"
@@ -31,7 +36,9 @@ function Beat() {
               >
                 <PlayIcon />
               </button>
-              <h1 className="text-3xl font-bold my-2 text-white capitalize">{id}</h1>
+              <h1 className="text-3xl font-bold my-2 text-white capitalize">
+                {id}
+              </h1>
               <h2 className="my-2 text-xl font-medium text-white capitalize">
                 <Link to={`/producer/${beat.title}`}>{beat.title}</Link>
               </h2>
@@ -47,7 +54,10 @@ function Beat() {
       )}
 
       <div className="px-2">
-        <button className="bg-sky-500 text-white flex w-full py-2 rounded-md my-2 justify-center gap-2 font-semibold text-lg">
+        <button
+          className="bg-sky-500 text-white flex w-full py-2 rounded-md my-2 justify-center gap-2 font-semibold text-lg"
+          onClick={handleAddToCart}
+        >
           <CartIcon /> Buy for R 500.00
         </button>
         <button className="bg-gray-500 text-white flex w-full py-2 rounded-md my-2 justify-center gap-2 font-semibold text-lg">

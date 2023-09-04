@@ -1,5 +1,4 @@
 import { useOutletContext, Link } from "react-router-dom";
-import PlanList from "../components/PlanList";
 import BeatList from "../components/BeatList";
 import Carousel from "../components/Carousel";
 
@@ -31,20 +30,19 @@ export default function Index() {
       <section className="bg-neutral-950 grid py-4 ">
         <h4 className="text-xl font-bold px-4 text-white ">HOT</h4>
         <BeatList data={data} />
-        <Link className="text-white text-center px-4 justify-self-center bg-sky-400 py-2 w-3/4 rounded font-bold">
+        <Link className="text-white text-center px-4 justify-self-center bg-sky-400 py-2 w-3/4 rounded font-bold" to={"/beat"}>
           All Beats
         </Link>
       </section>
       <section className="text-white bg-black px-4 pb-12">
         <h4 className="text-xl font-bold py-4">Genres</h4>
         <div className="grid grid-cols-2 text-center gap-4">
-          <Link className="block bg-neutral-900 py-4 rounded">Hip-Hop</Link>
-          <Link className="block bg-neutral-900 py-4 rounded">RNB</Link>
-          <Link className="block bg-neutral-900 py-4 rounded">Afro-beats</Link>
-          <Link className="block bg-neutral-900 py-4 rounded">Trap</Link>
+          <Link className="block bg-neutral-900 py-4 rounded" to="/type/Hip-hop" >Hip-Hop</Link>
+          <Link className="block bg-neutral-900 py-4 rounded" to="/type/RNB">RNB</Link>
+          <Link className="block bg-neutral-900 py-4 rounded" to="/type/Afrobeats">Afro-beats</Link>
+          <Link className="block bg-neutral-900 py-4 rounded" to="/type/Trap">Trap</Link>
         </div>
       </section>
-      <PlanList />
     </div>
   );
 }

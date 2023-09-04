@@ -14,6 +14,7 @@ import Beat from './routes/beat'
 import Type from './routes/type';
 import Producer from './routes/producer';
 import ErrorPage from "./error-page";
+import AllBeats from './routes/allBeats';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
        
           return fetch(` https://beats-server.onrender.com/api`)
           // return fetch(` http://192.168.43.159:8000/api`)
+          // return fetch(` http://localhost:8000/api`)
       }}>
           <Route ></Route>
           <Route index element={<Index />}  />
@@ -29,7 +31,7 @@ const router = createBrowserRouter(
           <Route path="/search" action={searchAction} element={ <SearchResults />} />
           {/* beats routes*/}
           <Route path="/beat" element={<Outlet />}>
-            <Route path='/beat' element={<p className='pt-16'> all beats</p>}/>
+            <Route path='/beat' index={true} element={<AllBeats />}/>
             <Route path="/beat/:id"  element={<Beat />} /> 
           </Route>
           {/* Types routes */}
@@ -42,6 +44,9 @@ const router = createBrowserRouter(
             <Route path='/producer' element={<p className='pt-16'> all producers</p>} />
             <Route path='/producer/:id' element={<Producer />} />
           </Route>
+          {/* All Beats */}
+         
+   
           
       </Route>
 

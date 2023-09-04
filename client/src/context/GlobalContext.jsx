@@ -10,14 +10,14 @@ export const GlobalProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [toPurchase, setToPurchase] = useState()
 
+
   useEffect(() => {
     getData();
   }, []);
 
   async function getData() {
     // let res = await axios("http://192.168.43.159:8000/");
-
-
+    // let res = await axios("http://localhost:8000/");
     let res = await axios("https://beats-server.onrender.com/");
     setData(await res.data);
   }
@@ -33,7 +33,8 @@ export const GlobalProvider = ({ children }) => {
         isSidebarOpen,
         setIsSidebarOpen,
         toPurchase, 
-        setToPurchase
+        setToPurchase,
+
       }}
     >
       {children}

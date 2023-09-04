@@ -22,13 +22,17 @@ export default function Search() {
 }
 
 export const searchAction = async ({request}) => {
+    
     const dataForm = await request.formData()
     const searchTerm = dataForm.get("name")
+ 
 
     // let res = await axios.get(`http://192.168.43.159:8000/api/${searchTerm}`)
+    // let res = await axios.get(`http://localhost:8000/api/${searchTerm}`)
+    
     let res = await axios.get(`https://beats-server.onrender.com/api/${searchTerm}`);
     
-    return await res.data
+    return await {data : res.data, searchTerm : searchTerm}
 }
 
 
