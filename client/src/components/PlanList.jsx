@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Cross } from "./Icons";
 import useGlobal from "../hooks/useGlobal";
+import useCartStore from "../stores/cartStore";
 
 const PlanList = () => {
-  const { openPrice, setOpenPrice } = useGlobal();
+  const { openPlan, setOpenPlan , toPurchase, setToPurchase} = useGlobal();
   const [active, setActive] = useState("commercial");
+  const addItem = useCartStore((store)=> store.addItem)
+  const cart = useCartStore((store)=> store.items)
 
   const terms = [
     { id: 1, name: "basic", price: 300 },
@@ -18,13 +21,15 @@ const PlanList = () => {
   };
 
   const handleDialogClose = () => {
-    setOpenPrice(false);
+    setOpenPlan(false);
   };
 
   const activeTerm = terms.find((term) => term.name === active);
 
+
+
   return (
-    <dialog className="bg-white h-screen w-screen flex-col fixed top-0 z-50" open={openPrice}>
+    <dialog className="bg-white h-screen w-screen flex-col fixed top-0 z-50" open={openPlan}>
       <div className="grid grid-cols-10 bg-black text-white px-4 py-2">
         <h1 className="col-span-9 font-bold text-lg">Choose plan</h1>
         <button className="" onClick={handleDialogClose}>
@@ -64,7 +69,7 @@ const PlanList = () => {
 
       <div className="grid grid-col-1 px-4 gap-2">
         <p>Total : {activeTerm.price === "Negotiate" ? activeTerm.price : `R${activeTerm.price}`}</p>
-        <button className="bg-blue-600 text-white py-2">Add to Cart</button>
+        <button className="bg-blue-600 text-white py-2" onClick={()=> addItem({...toPurchase, price: activeTerm.price})}>Add to Cart</button>
       </div>
     </dialog>
   );

@@ -4,7 +4,7 @@ import { useMedia } from "../stores/mediaStore";
 import { CartIcon } from "./Icons";
 
 function Beat({ name, title, price, type, cover }) {
-  const { setOpenPrice } = useGlobal();
+  const { setOpenPlan , setToPurchase} = useGlobal();
   const play = useMedia((state) => state.play);
   const navigate = useNavigate();
 
@@ -13,7 +13,8 @@ function Beat({ name, title, price, type, cover }) {
   };
 
   const handleAddToCart = () => {
-    setOpenPrice(true);
+    setOpenPlan(true);
+    setToPurchase({name, title, price})
   };
 
   return (
