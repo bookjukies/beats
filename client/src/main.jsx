@@ -20,7 +20,7 @@ const router = createBrowserRouter(
     <Route errorElement={<ErrorPage />}>
       <Route path="/"  element={ <Root /> } loader={ async ()=> {
        
-          return fetch(` http://192.168.43.159:8000/api`)
+          return fetch(` https://beats-server.onrender.com:8000/api`)
       }}>
           <Route ></Route>
           <Route index element={<Index />}  />
