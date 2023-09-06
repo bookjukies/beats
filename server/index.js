@@ -16,12 +16,12 @@ app.use(cors({origin: "*"}))
 
 app.get("/", search ,async (req, res) => {
   const data =  [
-    { name: "ice", price:300,type: "RNB",title: "cold", cover: "dark.jpg" },
-          { name: "king", price:500,type: "Afrobeats",title: "falcon", cover: "donald.jpeg" },
+    { name: "ice", price:300,type: "RNB",title: "cold", cover: "tyler.jpeg" },
+          { name: "king", price:500,type: "Afrobeats",title: "falcon", cover: "donald.jpg" },
           { name: "kiki", price:700,type: "Hip-hop",title: "kim kay", cover: "jackson.jpeg" },
           { name: "big papa", price:400,type: "POP",title: "cold nigths", cover: "mega.png" },
-          { name: "island", price:300,type: "Piano",title: "fozen sand", cover: "palm.jpeg" },
-          { name: "bongani", price:900,type: "Trap",title: "The king", cover: "yeh.jpeg" },
+          { name: "island", price:300,type: "Piano",title: "fozen sand", cover: "palm.jpg" },
+          { name: "bongani", price:900,type: "Trap",title: "The king", cover: "dark.jpg" },
   ]
 
   res.json(data)
@@ -29,7 +29,7 @@ app.get("/", search ,async (req, res) => {
 
 app.get("/api/" ,async (req, res) => {
   const data =  [
-    { name: "ice", price:300,type: "RNB",title: "cold", cover: "yeh.jpeg" },
+    { name: "ice", price:300,type: "RNB",title: "cold", cover: "tyler.jpeg" },
           { name: "king", price:500,type: "Afrobeats",title: "falcon", cover: "donald.jpg" },
           { name: "kiki", price:700,type: "Hip-hop",title: "kim kay", cover: "jackson.jpeg" },
           { name: "big papa", price:400,type: "POP",title: "cold nigths", cover: "mega.png" },
