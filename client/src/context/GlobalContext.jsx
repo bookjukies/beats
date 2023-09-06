@@ -16,9 +16,9 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   async function getData() {
-    let res = await axios("http://192.168.43.159:8000/");
+    // let res = await axios("http://192.168.43.159:8000/");
     // let res = await axios("http://localhost:8000/");
-    // let res = await axios("https://beats-server.onrender.com/");
+    let res = await axios("https://beats-server.onrender.com/");
     setData(await res.data);
   }
 
