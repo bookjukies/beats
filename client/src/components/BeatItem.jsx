@@ -1,30 +1,56 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import useGlobal from "../hooks/useGlobal";
 import { useMedia } from "../stores/mediaStore";
-import { CartIcon } from "./Icons";
+import { CartIcon, PlayIcon, PauseIcon } from "./Icons";
 
-function Beat({ name, title, price, type, cover }) {
-  const { setOpenPlan , setToPurchase} = useGlobal();
-  const play = useMedia((state) => state.play);
-  const navigate = useNavigate();
 
+function Beat({ name, title, price, type, cover, url, modifyPlayList }) {
+  const { setOpenPlan, setToPurchase , audioSourceRef} = useGlobal();
+  const { play, playing, isPlaying, resume, pause, isPaused } = useMedia();
+
+
+  
+
+  
   const handlePlay = () => {
-    play("king");
+
+    modifyPlayList();
+    play({ url, title, name });
+    
+    if(playing?.name === name){
+      if(isPaused){
+        
+        handleResume()
+       
+      }else{
+        handlePause()
+      }
+    }
   };
+
+  function handlePause () {
+    pause(audioSourceRef)
+  }
+
+  function handleResume () {
+    resume(audioSourceRef)
+  }
 
   const handleAddToCart = () => {
     setOpenPlan(true);
-    setToPurchase({name, title})
+    setToPurchase({ name, title });
   };
 
   return (
     <div className="grid grid-cols-10 h-18 py-1 my-3 text-white gap-2 bg-neutral-900 rounded-xl">
-      <div className="col-span-2 h-full rounded-xl grid" onClick={handlePlay}>
-        <img
-          className="rounded-xl self-center md:h-16"
-          src={`/images/${cover}`}
-          alt=""
-        />
+      <div
+        className="col-span-2 h-full rounded-xl grid  bg-center bg-cover content-center justify-center"
+        style={{ backgroundImage: `url("/images/${cover}")` }}
+        onClick={handlePlay}
+      >
+        <div className="bg-over p-1 rounded-full">
+          { isPlaying? (playing?.name === name ? <PauseIcon /> : <PlayIcon />) : <PlayIcon /> }
+        </div>
       </div>
       <div className="col-span-6 text-sm px-2 grid">
         <Link

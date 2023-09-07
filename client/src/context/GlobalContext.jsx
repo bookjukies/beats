@@ -16,11 +16,19 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   async function getData() {
-    // let res = await axios("http://192.168.43.159:8000/");
+    //mobile hotspot
+    let res = await axios("http://192.168.43.159:8000/");
+
     // let res = await axios("http://localhost:8000/");
-    let res = await axios("https://beats-server.onrender.com/");
+    // let res = await axios("https://beats-server.onrender.com/");
+
+    // home wi-fi
+    // let res = await axios("http://192.168.0.110:8000/");
+  
     setData(await res.data);
   }
+
+  const [audioSourceRef, setAudioSourceRef] = useState()
 
   return (
     <GlobalContext.Provider
@@ -34,7 +42,8 @@ export const GlobalProvider = ({ children }) => {
         setIsSidebarOpen,
         toPurchase, 
         setToPurchase,
-
+        audioSourceRef, 
+        setAudioSourceRef
       }}
     >
       {children}

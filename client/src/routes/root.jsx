@@ -9,7 +9,7 @@ import useGlobal from "../hooks/useGlobal";
 import PlanList from "../components/PlanList";
 
 export default function Root() {
-  const playing = useMedia((state) => state.playing);
+  const {playing, isPlaying} = useMedia();
   const { pathname } = useLocation();
   const data = useLoaderData();
   const { isSidebarOpen, setIsSidebarOpen } = useGlobal();
@@ -34,7 +34,7 @@ export default function Root() {
 
       <Outlet context={data} />
       
-      {playing ? <MediaPlayer audioSource={"/test.mp3"} /> : null}
+      {playing ? <MediaPlayer audioSource={playing} /> : null}
     </div>
   );
 }

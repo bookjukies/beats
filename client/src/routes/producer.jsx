@@ -1,11 +1,17 @@
 import { useParams } from "react-router-dom";
 import useGlobal from "../hooks/useGlobal";
 import Beat from "../components/BeatItem";
+import { useMedia } from "../stores/mediaStore";
 
 function Producer() {
   const { data } = useGlobal();
   const { id } = useParams();
   const beat = data.filter((entry) => entry.title === id);
+
+  const {setPlayList} = useMedia()
+  const handlePlayist = () =>{
+    setPlayList(beat)
+  }
   return (
     <div className="pt-28 bg-black text-white min-h-screen mt-4">
       <div className="grid w-screen px-4 gap-2">
@@ -32,6 +38,8 @@ function Producer() {
               price={entry.price}
               type={entry.type}
               cover={entry.cover}
+              url={entry.url}
+              modifyPlayList = {handlePlayist}
             />
           ))
         ) : (

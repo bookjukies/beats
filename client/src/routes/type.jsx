@@ -1,12 +1,17 @@
 import { useParams } from "react-router-dom";
 import useGlobal from "../hooks/useGlobal";
 import Beat from "../components/BeatItem";
-
+import { useMedia } from "../stores/mediaStore";
 function Type() {
   const { tag } = useParams();
   const { data } = useGlobal();
 
   const types = data.filter((beat) => beat.type === tag);
+
+  const {setPlayList} = useMedia()
+  const handlePlayist = () =>{
+    setPlayList(types)
+  }
   
   return (
     <div className="pt-28 bg-neutral-950 min-h-screen text-white px-4">
@@ -20,6 +25,8 @@ function Type() {
             price={type.price}
             title={type.title}
             cover={type.cover}
+            url={type.url}
+            modifyPlayList = {handlePlayist}
           />
         ))
       ) : (

@@ -1,8 +1,16 @@
 import useGlobal from "../hooks/useGlobal";
 import Beat from "../components/BeatItem";
+import { useMedia } from "../stores/mediaStore";
 
 function AllBeats() {
   const { data} = useGlobal();
+
+
+  const {setPlayList} = useMedia()
+  const handlePlayist = () =>{
+    setPlayList(data)
+  }
+
   return (
     <section className="pt-28 bg-neutral-950 min-h-screen text-white px-4">
 
@@ -17,6 +25,8 @@ function AllBeats() {
             cover={entry.cover}
             title={entry.title}
             type={entry.type}
+            url = {entry.url}
+            modifyPlayList = {handlePlayist}
           />
         ))
       ) : (

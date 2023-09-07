@@ -7,12 +7,13 @@ import useGlobal from "../hooks/useGlobal";
 function Beat() {
   const { data, setOpenPlan, setToPurchase } = useGlobal();
   const { id } = useParams();
-  const play = useMedia((state) => state.play);
+  const {setPlayList, play} = useMedia()
 
   const beat = data.find((entry) => entry.name === id);
 
   const handlePlay = () => {
-    play("hello");
+    setPlayList([beat])
+    play({url: beat.url, name: beat.name, title: beat.title});
   };
 
 
@@ -20,9 +21,8 @@ function Beat() {
     setOpenPlan(true);
     setToPurchase({ name: beat.name, title: beat.title });
   };
-
   return (
-    <div className="text-black w-full h-screen relative mt-24 py-2 bg-black">
+    <div className="text-white w-full h-screen relative mt-24 py-2 bg-black">
       {beat && (
         <div
           className="w-full h-3/5 grid content-end bg-center bg-cover"
