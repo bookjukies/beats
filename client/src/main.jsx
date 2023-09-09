@@ -15,6 +15,7 @@ import Type from './routes/type';
 import Producer from './routes/producer';
 import ErrorPage from "./error-page";
 import AllBeats from './routes/allBeats';
+import Test from './routes/test';
 
 
 const router = createBrowserRouter(
@@ -22,11 +23,11 @@ const router = createBrowserRouter(
     <Route errorElement={<ErrorPage />}>
       <Route path="/"  element={ <Root /> } loader={ async ()=> {
        
-          return fetch(` https://beats-server.onrender.com/api`)
+          // return fetch(` https://beats-server.onrender.com/api`)
 
           // return fetch(`http://192.168.0.110:8000/api`)
           
-          // return fetch(` http://192.168.43.159:8000/api`)
+          return fetch(` http://192.168.43.159:8000/api`)
           // return fetch(` http://localhost:8000/api`)
       }}>
           <Route ></Route>
@@ -50,7 +51,7 @@ const router = createBrowserRouter(
           </Route>
           {/* All Beats */}
 
-         
+         <Route path="/test" element = {<Test />} />
          
    
           

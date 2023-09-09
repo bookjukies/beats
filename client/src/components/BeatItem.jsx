@@ -4,7 +4,7 @@ import { useMedia } from "../stores/mediaStore";
 import { CartIcon, PlayIcon, PauseIcon } from "./Icons";
 
 
-function Beat({ name, title, price, type, cover, url, modifyPlayList }) {
+function Beat({ name, producer, price, type, cover, url, modifyPlayList }) {
   const { setOpenPlan, setToPurchase , audioSourceRef} = useGlobal();
   const { play, playing, isPlaying, resume, pause, isPaused } = useMedia();
 
@@ -15,7 +15,7 @@ function Beat({ name, title, price, type, cover, url, modifyPlayList }) {
   const handlePlay = () => {
 
     modifyPlayList();
-    play({ url, title, name });
+    play({ url, producer, name });
     
     if(playing?.name === name){
       if(isPaused){
@@ -38,7 +38,7 @@ function Beat({ name, title, price, type, cover, url, modifyPlayList }) {
 
   const handleAddToCart = () => {
     setOpenPlan(true);
-    setToPurchase({ name, title });
+    setToPurchase({ name, producer, cover });
   };
 
   return (
@@ -55,7 +55,7 @@ function Beat({ name, title, price, type, cover, url, modifyPlayList }) {
       <div className="col-span-6 text-sm px-2 grid">
         <Link
           to={`/beat/${name}`}
-          state={{ name, title, price, type, cover }}
+          state={{ name, producer, price, type, cover }}
           className="block font-bold text-xl capitalize overflow-x-hidden whitespace-nowrap"
         >
           {name}
@@ -66,10 +66,10 @@ function Beat({ name, title, price, type, cover, url, modifyPlayList }) {
             R {price}
           </div>
           <Link
-            to={`/producer/${title}`}
+            to={`/producer/${producer}`}
             className="block capitalize h-full overflow-x-hidden whitespace-nowrap text-base col-span-6"
           >
-            {title}
+            {producer}
           </Link>
         </div>
       </div>

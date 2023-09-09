@@ -15,7 +15,7 @@ function BeatList({ data }) {
         <Beat
           key={entry.name}
           name={entry.name}
-          title={entry.title}
+          producer={entry.producer}
           price={entry.price}
           type={entry.type}
           cover={entry.cover}

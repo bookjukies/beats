@@ -13,13 +13,13 @@ function Beat() {
 
   const handlePlay = () => {
     setPlayList([beat])
-    play({url: beat.url, name: beat.name, title: beat.title});
+    play({url: beat.url, name: beat.name, producer: beat.producer});
   };
 
 
   const handleAddToCart = () => {
     setOpenPlan(true);
-    setToPurchase({ name: beat.name, title: beat.title });
+    setToPurchase({ name: beat.name, producer: beat.producer });
   };
   return (
     <div className="text-white w-full h-screen relative mt-24 py-2 bg-black">
@@ -40,7 +40,7 @@ function Beat() {
                 {id}
               </h1>
               <h2 className="my-2 text-xl font-medium text-white capitalize">
-                <Link to={`/producer/${beat.title}`}>{beat.title}</Link>
+                <Link to={`/producer/${beat.producer}`}>{beat.producer}</Link>
               </h2>
               <Link
                 className="bg-neutral-700 text-gray-200 py-1 px-4 rounded-xl"

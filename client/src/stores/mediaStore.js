@@ -11,7 +11,7 @@ export const useMedia = create((set) => ({
     set((state) => {
 
       const current = state.playList.find(
-        (entry) => entry.name === params.name && entry.title === params.title
+        (entry) => entry.name === params.name && entry.producer === params.producer
       );
 
       const index = state.playList.indexOf(current);

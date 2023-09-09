@@ -6,7 +6,7 @@ import { useMedia } from "../stores/mediaStore";
 function Producer() {
   const { data } = useGlobal();
   const { id } = useParams();
-  const beat = data.filter((entry) => entry.title === id);
+  const beat = data.filter((entry) => entry.producer === id);
 
   const {setPlayList} = useMedia()
   const handlePlayist = () =>{
@@ -34,7 +34,7 @@ function Producer() {
             <Beat
               key={entry.name}
               name={entry.name}
-              title={entry.title}
+              producer={entry.producer}
               price={entry.price}
               type={entry.type}
               cover={entry.cover}

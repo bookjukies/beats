@@ -23,7 +23,7 @@ function Type() {
             key={type.name}
             name={type.name}
             price={type.price}
-            title={type.title}
+            producer={type.producer}
             cover={type.cover}
             url={type.url}
             modifyPlayList = {handlePlayist}

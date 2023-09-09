@@ -4,6 +4,7 @@ import Carousel from "../components/Carousel";
 
 export default function Index() {
   const data = useOutletContext();
+  const firstSix = data.slice(0, 6)
   return (
     <div className="h-screen py-20 mt-4 ">
       <section
@@ -25,11 +26,11 @@ export default function Index() {
         <h3 className="text-xl font-bold py-2 px-4 text-white">
           Recently Updated Beats
         </h3>
-        <Carousel data={data} />
+        <Carousel data={firstSix} />
       </section>
       <section className="bg-neutral-950 grid py-4 ">
         <h4 className="text-xl font-bold px-4 text-white ">HOT</h4>
-        <BeatList data={data} />
+        <BeatList data={firstSix} />
         <Link className="text-white text-center px-4 justify-self-center bg-sky-400 py-2 w-3/4 rounded font-bold" to={"/beat"}>
           All Beats
         </Link>

@@ -24,7 +24,7 @@ export default function SearchResults() {
             name={result.name}
             price={result.price}
             cover={result.cover}
-            title={result.title}
+            producer={result.producer}
             type={result.type}
             url={result.url}
             modifyPlayList = {handlePlayist}

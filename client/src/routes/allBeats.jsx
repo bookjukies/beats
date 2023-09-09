@@ -23,7 +23,7 @@ function AllBeats() {
             name={entry.name}
             price={entry.price}
             cover={entry.cover}
-            title={entry.title}
+            producer={entry.producer}
             type={entry.type}
             url = {entry.url}
             modifyPlayList = {handlePlayist}

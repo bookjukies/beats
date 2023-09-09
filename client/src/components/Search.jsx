@@ -27,10 +27,10 @@ export const searchAction = async ({request}) => {
     const searchTerm = dataForm.get("name")
  
 
-    // let res = await axios.get(`http://192.168.43.159:8000/api/${searchTerm}`)
+    let res = await axios.get(`http://192.168.43.159:8000/api/${searchTerm}`)
     // let res = await axios.get(`http://localhost:8000/api/${searchTerm}`)
     
-    let res = await axios.get(`https://beats-server.onrender.com/api/${searchTerm}`);
+    // let res = await axios.get(`https://beats-server.onrender.com/api/${searchTerm}`);
     // let res = await axios.get(`http://192.168.0.110:8000/api/${searchTerm}`);
     
     

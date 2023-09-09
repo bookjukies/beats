@@ -61,7 +61,7 @@ function MediaPlayer({ audioSource }) {
     <section className="grid grid-cols-10 fixed bottom-0 z-50 px-6 bg-black w-screen text-white">
       <div className="col-span-6">
         <div className="">{playing.name}</div>
-        <div className="">{playing.title}</div>
+        <div className="">{playing.producer}</div>
       </div>
 
       <div className="flex justify-between col-span-4 py-3">

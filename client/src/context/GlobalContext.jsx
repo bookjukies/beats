@@ -17,10 +17,10 @@ export const GlobalProvider = ({ children }) => {
 
   async function getData() {
     //mobile hotspot
-    // let res = await axios("http://192.168.43.159:8000/");
+    let res = await axios("http://192.168.43.159:8000/");
 
     // let res = await axios("http://localhost:8000/");
-    let res = await axios("https://beats-server.onrender.com/");
+    // let res = await axios("https://beats-server.onrender.com/");
 
     // home wi-fi
     // let res = await axios("http://192.168.0.110:8000/");
