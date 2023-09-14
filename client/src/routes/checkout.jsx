@@ -4,7 +4,9 @@ const Checkout = () => {
   return (
 <>
 <HeaderAuth />
-<p>hello</p>
+<section>
+    
+</section>
 </>
   )
 }

@@ -24,6 +24,8 @@ export default function Cart() {
   // Group cart items by producer
   const groupedItems = groupItemsByProducer(cart);
 
+  // Calculate the total cart price
+  const totalCartPrice = cart.reduce((total, item) => total + item.price, 0);
 
   return (
     <div className="mt-24 p-4 bg-black text-white min-h-[90vh] w-screen">
@@ -56,7 +58,13 @@ export default function Cart() {
           );
         })}
       </div>
-      {cart.length? null : <p className="text-center font-bold text-xl mt-12">No Beats On Cart</p>}
+      {cart.length ? (
+        <div className="text-center font-bold text-xl mt-4">
+          Total Cart Price: R {totalCartPrice}
+        </div>
+      ) : (
+        <p className="text-center font-bold text-xl mt-12">No Beats In Cart</p>
+      )}
       <div className="mt-12 w-full grid">
         {cart.length > 0 ? (
           <Link to="/checkout" className="bg-sky-400 py-2 text-center  font-bold">Proceed To Checkout</Link>
