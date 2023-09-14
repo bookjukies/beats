@@ -16,6 +16,7 @@ import Producer from './routes/producer';
 import ErrorPage from "./error-page";
 import AllBeats from './routes/allBeats';
 import Test from './routes/test';
+import Checkout from './routes/checkout';
 
 
 const router = createBrowserRouter(
@@ -30,7 +31,7 @@ const router = createBrowserRouter(
           // return fetch(` http://192.168.43.159:8000/api`)
           // return fetch(` http://localhost:8000/api`)
       }}>
-          <Route ></Route>
+      
           <Route index element={<Index />}  />
           <Route path="/cart" element={ <Cart /> } />
           <Route path="/search" action={searchAction} element={ <SearchResults />} />
@@ -52,13 +53,11 @@ const router = createBrowserRouter(
           {/* All Beats */}
 
          <Route path="/test" element = {<Test />} />
-         
-   
-          
       </Route>
 
       <Route path="/sign-up" element={ <SignUp /> } />
       <Route path="/login" element={ <Login /> } />
+      <Route path="/checkout" element={<Checkout />} />
     </Route>
   )
 );

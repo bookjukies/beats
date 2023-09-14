@@ -24,10 +24,9 @@ export default function Cart() {
   // Group cart items by producer
   const groupedItems = groupItemsByProducer(cart);
 
-  console.log(cart)
 
   return (
-    <div className="mt-24 p-4 bg-black text-white min-h-[90vh]">
+    <div className="mt-24 p-4 bg-black text-white min-h-[90vh] w-screen">
       <h2 className="font-bold my-4 text-center text-xl">
         Cart ({cart.length})
       </h2>
@@ -37,12 +36,12 @@ export default function Cart() {
           const totalGroupPrice = items.reduce((total, item) => total + item.price, 0);
 
           return (
-            <div key={producer}>
-              <div className="grid grid-cols-12">
+            <div className="border-b " key={producer}>
+              <div className="grid grid-cols-12 py-4">
                 <img className="col-span-3 rounded-full w-8" src={`/images/${items[0].cover}`} alt="" />
-                <div className="col-span-9 grid grid-cols-2">
-                  <h3 className="text-lg font-semibold">{producer}</h3>
-                  <p>R {totalGroupPrice}</p> {/* Display total price */}
+                <div className="col-span-9 grid grid-cols-9">
+                  <h3 className="text-lg font-semibold col-span-6 capitalize">{producer}</h3>
+                  <p className="col-span-3 text-right font-bold">R {totalGroupPrice}</p> {/* Display total price */}
                 </div>
               </div>
               {items.map((item, index) => (
@@ -57,9 +56,10 @@ export default function Cart() {
           );
         })}
       </div>
-      <div className="py-12">
+      {cart.length? null : <p className="text-center font-bold text-xl mt-12">No Beats On Cart</p>}
+      <div className="mt-12 w-full grid">
         {cart.length > 0 ? (
-          <Link className="bg-sky-400 py-2 px-12 mt-12">Proceed To Checkout</Link>
+          <Link to="/checkout" className="bg-sky-400 py-2 text-center  font-bold">Proceed To Checkout</Link>
         ) : null}
       </div>
     </div>

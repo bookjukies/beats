@@ -27,7 +27,7 @@ const PlanList = () => {
   const activeTerm = terms.find((term) => term.name === active);
 
   const addToCartHandle = () =>{
-    addItem({...toPurchase, price: activeTerm.price})
+    addItem({...toPurchase, price: activeTerm.price , plan: activeTerm.name})
     setOpenPlan(false)
   }
 
@@ -55,7 +55,7 @@ const PlanList = () => {
               >
                 <input type="radio" id={term.name} name="plan" value={term.name} className="hidden" />
                 <label htmlFor={term.name} className="py-2 px-1">
-                  {/* <span className="block">{term.name}</span> <span className="">{term.price === "Negotiate" ? term.price : `R${term.price}`}</span> */}
+          
                   <span className="block">{term.name}</span> <span className="">{`R ${term.price}`}</span>
                 </label>
               </div>

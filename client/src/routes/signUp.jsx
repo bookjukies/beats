@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import HeaderAuth from '../components/HeaderAuth';
 
 
-
 export default function SignUp() {
   const {register, handleSubmit} = useForm()
 
