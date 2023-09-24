@@ -1,11 +1,17 @@
 import {useForm} from 'react-hook-form'
-import { Link } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 import HeaderAuth from '../components/HeaderAuth';
+import useGlobal from '../hooks/useGlobal';
+
 
 
 
 export default function Login() {
+  const {triedToCheckout} = useGlobal()
   const {register, handleSubmit} = useForm()
+
+  console.log(triedToCheckout);
+  
 
   const onSubmit = data =>{
     console.log(data);

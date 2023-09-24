@@ -1,5 +1,6 @@
 import CartItem from "../components/CartItem";
 import useCartStore from "../stores/cartStore";
+import useGlobal from "../hooks/useGlobal";
 import { Link } from "react-router-dom";
 
 function groupItemsByProducer(cartItems) {
@@ -19,6 +20,7 @@ function groupItemsByProducer(cartItems) {
 }
 
 export default function Cart() {
+  const {isLoggedIn, setTriedToCheckout} = useGlobal()
   const cart = useCartStore((store) => store.items);
 
   // Group cart items by producer
@@ -27,10 +29,19 @@ export default function Cart() {
   // Calculate the total cart price
   const totalCartPrice = cart.reduce((total, item) => total + item.price, 0);
 
+ 
+
+  const handleCheckout = () =>{
+
+    setTriedToCheckout(true)
+  }
+
+
   return (
     <div className="mt-24 p-4 bg-black text-white min-h-[90vh] w-screen">
       <h2 className="font-bold my-4 text-center text-xl">
         Cart ({cart.length})
+       
       </h2>
       <div className="">
         {Object.entries(groupedItems).map(([producer, items]) => {
@@ -67,7 +78,7 @@ export default function Cart() {
       )}
       <div className="mt-12 w-full grid">
         {cart.length > 0 ? (
-          <Link to="/checkout" className="bg-sky-400 py-2 text-center  font-bold">Proceed To Checkout</Link>
+          <Link to={isLoggedIn? "/checkout" : "/login"} className="bg-sky-400 py-2 text-center  font-bold" onClick={handleCheckout}>Proceed To Checkout</Link>
         ) : null}
       </div>
     </div>

@@ -1,14 +1,22 @@
 import {useForm} from 'react-hook-form'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HeaderAuth from '../components/HeaderAuth';
+import useGlobal from '../hooks/useGlobal';
+import useCartStore from '../stores/cartStore';
 
 
 export default function SignUp() {
+  const {setTriedToCheckout} = useGlobal()
   const {register, handleSubmit} = useForm()
+  const navigate =  useNavigate()
+  const {items} = useCartStore()
 
   const onSubmit = data =>{
-    console.log(data);
-    // reset()
+    if(items.length){
+      setTriedToCheckout(true)
+    }
+    
+   navigate("/details")
   }
 
   return (

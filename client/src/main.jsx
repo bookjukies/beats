@@ -15,8 +15,7 @@ import Type from './routes/type';
 import Producer from './routes/producer';
 import ErrorPage from "./error-page";
 import AllBeats from './routes/allBeats';
-import Test from './routes/test';
-import Checkout from './routes/checkout';
+import Details from './routes/details';
 
 
 const router = createBrowserRouter(
@@ -52,12 +51,11 @@ const router = createBrowserRouter(
           </Route>
           {/* All Beats */}
 
-         <Route path="/test" element = {<Test />} />
       </Route>
 
       <Route path="/sign-up" element={ <SignUp /> } />
       <Route path="/login" element={ <Login /> } />
-      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/details" element={<Details />} />
     </Route>
   )
 );

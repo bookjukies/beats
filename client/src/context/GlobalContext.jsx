@@ -8,7 +8,11 @@ export const GlobalProvider = ({ children }) => {
   const [openPlan, setOpenPlan] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [toPurchase, setToPurchase] = useState()
+  const [toPurchase, setToPurchase] = useState() 
+
+  //we can use this redirect to checkout after someone was not able to checkout 
+  //this will be when you checkout without login first
+  const [triedToCheckout, setTriedToCheckout] = useState(false)
 
 
   useEffect(() => {
@@ -43,7 +47,9 @@ export const GlobalProvider = ({ children }) => {
         toPurchase, 
         setToPurchase,
         audioSourceRef, 
-        setAudioSourceRef
+        setAudioSourceRef,
+        triedToCheckout, 
+        setTriedToCheckout
       }}
     >
       {children}
